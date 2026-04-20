@@ -1,0 +1,217 @@
+.hero-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin-left: calc(-50vw + 50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #020408;
+}
+
+.environment-engine {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  perspective: 1000px;
+}
+
+/* 3D Road System */
+.road-system {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60%;
+  transform-style: preserve-3d;
+}
+
+.road-surface {
+  position: absolute;
+  top: 0; left: -50%;
+  width: 200%;
+  height: 1000%; /* Infinite feel */
+  background: 
+    linear-gradient(90deg, #020408 0%, transparent 10%, transparent 90%, #020408 100%),
+    linear-gradient(90deg, transparent 49%, rgba(0, 240, 255, 0.4) 50%, transparent 51%), 
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 100px);
+  transform: rotateX(80deg) translateY(-50%);
+  transform-origin: top center;
+  animation: road-travel 0.5s linear infinite;
+  box-shadow: 0 0 100px rgba(0, 240, 255, 0.1);
+}
+
+.side-lights {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.light-streak {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.8), transparent);
+  filter: blur(2px);
+  animation: side-travel linear infinite;
+}
+
+@keyframes side-travel {
+  0% { transform: translateY(-500px) translateZ(-1000px); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(500px) translateZ(0px); opacity: 0; }
+}
+
+.road-markings {
+  position: absolute;
+  top: 0; left: 50%;
+  width: 6px;
+  height: 100%;
+  background: repeating-linear-gradient(to bottom, #00f0ff 0, #00f0ff 100px, transparent 100px, transparent 200px);
+  transform: translateX(-50%);
+}
+
+@keyframes road-travel {
+  0% { transform: rotateX(85deg) translateY(-200px); }
+  100% { transform: rotateX(85deg) translateY(0); }
+}
+
+/* Scenery Layers */
+.scene-layer {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.scene-layer.active {
+  opacity: 0.4;
+}
+
+.sky-gradient {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 60%;
+  background: linear-gradient(to bottom, #000428 0%, #004e92 100%);
+  z-index: -1;
+}
+
+/* Bus Visualizer - Grounded */
+.bus-visualizer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 10vh;
+}
+
+.bus-container {
+  width: 800px;
+  position: relative;
+  filter: drop-shadow(0 20px 50px rgba(0,0,0,0.8));
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  z-index: 2;
+  position: relative;
+}
+
+/* Road Interaction */
+.bus-shadow {
+  position: absolute;
+  bottom: -20px;
+  left: 10%;
+  width: 80%;
+  height: 40px;
+  background: rgba(0,0,0,0.6);
+  filter: blur(15px);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Cinematic UI Overlay */
+.cinematic-hud {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  z-index: 20;
+  border-left: 4px solid var(--accent-cyan);
+  padding-left: 20px;
+}
+
+.hud-title {
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+}
+
+.hud-speed {
+  font-size: 3rem;
+  font-weight: 800;
+  font-family: monospace;
+}
+
+/* Content Area */
+.hero-content {
+  position: absolute;
+  bottom: 100px;
+  left: 60px;
+  z-index: 20;
+  max-width: 600px;
+}
+
+.hero-title {
+  font-size: 4rem;
+  line-height: 1;
+  margin-bottom: 20px;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.travel-nav {
+  position: absolute;
+  right: 60px;
+  bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 30;
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--accent-cyan);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-dot.active {
+  background: var(--accent-cyan);
+  box-shadow: 0 0 15px var(--accent-cyan);
+  transform: scale(1.4);
+}
+
+/* Speed Particles */
+.speed-vignette {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  box-shadow: inset 0 0 200px rgba(0,240,255,0.1);
+  pointer-events: none;
+  z-index: 15;
+}
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 2.5rem; }
+  .bus-container { width: 90vw; }
+}

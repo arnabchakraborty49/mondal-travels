@@ -1,0 +1,120 @@
+.fleet-section {
+  padding: 100px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+  perspective: 2000px;
+}
+
+.fleet-card {
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.fleet-card:hover {
+  box-shadow: 0 0 40px rgba(0, 240, 255, 0.2);
+}
+
+.fleet-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fleet-card:hover::before {
+  opacity: 1;
+}
+
+.card-icon {
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.fleet-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.capacity {
+  color: var(--accent-cyan);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.desc {
+  color: var(--text-secondary);
+  flex-grow: 1;
+  margin-bottom: 25px;
+}
+
+.features {
+  list-style: none;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.features li {
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 20px;
+  color: #ddd;
+}
+
+.features li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent-cyan);
+}
+
+.cta-container {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.huge-cta {
+  text-align: center;
+  padding: 60px 40px;
+  width: 100%;
+  max-width: 800px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,240,255,0.05));
+  border: 1px solid rgba(0,240,255,0.2);
+}
+
+.huge-cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.huge-cta p {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.checkout-btn {
+  font-size: 1.2rem;
+  padding: 16px 40px;
+}
+
+@media (max-width: 768px) {
+  .fleet-grid {
+    grid-template-columns: 1fr;
+  }
+}
