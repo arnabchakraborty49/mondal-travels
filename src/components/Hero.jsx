@@ -256,9 +256,14 @@ const Hero = () => {
             <p style={{ fontSize: '1.1rem', opacity: 0.8, marginBottom: '30px' }}>
               {currentState.desc}
             </p>
-            <button className="button-primary" style={{ padding: '15px 40px', fontSize: '1.2rem' }}>
-              Book Journey Now
-            </button>
+            <div className="contact-actions">
+              <a href="tel:+919836683826" className="button-primary" style={{ padding: '15px 40px', fontSize: '1.2rem', textDecoration: 'none', display: 'inline-block' }}>
+                Call: 98366 83826
+              </a>
+              <a href="mailto:mondalbusservices@gmail.com" className="email-link cyan-glow" style={{ display: 'block', marginTop: '15px', color: '#00f0ff', opacity: 0.8 }}>
+                mondalbusservices@gmail.com
+              </a>
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>

@@ -115,7 +115,9 @@ const Fleet = () => {
         <div className="glass-panel huge-cta">
           <h2>Ready to hit the road?</h2>
           <p>Book your perfect vehicle today and experience travel the Mondal way.</p>
-          <button className="button-primary checkout-btn" id="booking">Book Now</button>
+          <a href="tel:+919836683826" className="button-primary checkout-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
+            Call: 98366 83826
+          </a>
         </div>
       </motion.div>
     </section>

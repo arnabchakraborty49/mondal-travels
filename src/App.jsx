@@ -27,7 +27,8 @@ function App() {
           <h1 className="logo-text">Mondal <span className="gradient-text">Travels & Co</span></h1>
         </div>
         <nav className="nav-links">
-          <a href="#booking">Book Now</a>
+          <a href="mailto:mondalbusservices@gmail.com">Email Us</a>
+          <a href="tel:+919836683826" className="phone-nav">📞 98366 83826</a>
           <a href="#fleet">Our Fleet</a>
         </nav>
       </header>
