@@ -263,9 +263,6 @@ const Hero = () => {
                 </svg>
                 Chat: 98366 83826
               </a>
-              <a href="mailto:mondalbusservices@gmail.com" className="email-link cyan-glow" style={{ display: 'block', marginTop: '15px', color: '#00f0ff', opacity: 0.8 }}>
-                mondalbusservices@gmail.com
-              </a>
               <a href="mailto:mondalbusservices98@gmail.com" className="email-link cyan-glow" style={{ display: 'block', marginTop: '10px', color: '#00f0ff', opacity: 0.8 }}>
                 mondalbusservices98@gmail.com
               </a>
